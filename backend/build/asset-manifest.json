@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5e83626d.css",
+    "main.js": "/static/js/main.693eb7c1.js",
+    "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
+    "static/media/video.mp4": "/static/media/video.d48e218167a19525e9ae.mp4",
+    "static/media/trip.svg": "/static/media/trip.e990b31156a19ef6752782fe44c0e4d9.svg",
+    "static/media/contractors.svg": "/static/media/contractors.e49c7e709f49d454bae42c84ac1b5d8f.svg",
+    "static/media/beverages.svg": "/static/media/beverages.ab92727091ec97aaf3079255344ea543.svg",
+    "static/media/current-map.svg": "/static/media/current-map.1e9fa232b93dc6237de0b30eefa7f6da.svg",
+    "static/media/computers.svg": "/static/media/computers.b1038692163b591c115e306f2e57e25c.svg",
+    "static/media/appreciation-green.svg": "/static/media/appreciation-green.cf9ab22ba3e3a1b3ff5225003c02fee1.svg",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.5e83626d.css.map": "/static/css/main.5e83626d.css.map",
+    "main.693eb7c1.js.map": "/static/js/main.693eb7c1.js.map",
+    "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5e83626d.css",
+    "static/js/main.693eb7c1.js"
+  ]
+}
