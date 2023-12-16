@@ -1,2 +1,0 @@
-mobile/
-frontend/node_modules
