@@ -16,9 +16,8 @@ const Sidebar = ({ logout, isAuthenticated, isOpen, toggle }) => {
   const guestLinks = () => (
     <Fragment>
       <SidebarMenu>
-        <SidebarLink to="about" onClick={toggle}>About</SidebarLink>
-        <SidebarLink to="business" onClick={toggle}>Business Cards</SidebarLink>
-        <SidebarLink to="signup" onClick={toggle}>Sign Up</SidebarLink>
+        <SidebarLink to="about" onClick={toggle}>Find Jobs</SidebarLink>
+        <SidebarLink to="business" onClick={toggle}>Events</SidebarLink>
       </SidebarMenu>
       <SideBtnWrap>
         <SidebarRoute to="/login" onClick={toggle}>Sign In</SidebarRoute>

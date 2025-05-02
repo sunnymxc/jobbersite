@@ -1,11 +1,34 @@
 import http from '../../API';
 
-const getAll = () => {
-    return http.get("/docs/");
+const getAll = async (filterCriteria = {}) => {
+    let url = "/docs/";
+    if (Object.keys(filterCriteria).length > 0) {
+        const params = new URLSearchParams(filterCriteria);
+        url += `?${params.toString()}`;
+    }
+    return http.get(url);
 };
 
-const get = id => {
-    return http.get(`/docs/${id}`);
+const getAllCountries = async () => {
+    return http.get("/countries/");
+};
+
+const getDropdownOptions = async (type, countryId) => {
+    switch (type) {
+        case "category":
+            return http.get("/categories/");
+        case "state":
+            return http.get(countryId ? `/states/?country=${countryId}` : "/states/");
+        case "discipline":
+            // Add countryId to the query params here.
+            return http.get(countryId ? `/disciplines/?country=${countryId}` : "/disciplines/");
+        default:
+            throw new Error("Invalid dropdown type: " + type);
+    }
+};
+
+const getPost = (slug) => {
+    return http.get(`/docs/${slug}/`);
 };
 
 const create = data => {
@@ -30,12 +53,14 @@ const findByTitle = title => {
 
 const DocService = {
     getAll,
-    get,
+    getAllCountries,
+    getDropdownOptions,
+    getPost,
     create,
     update,
     remove,
     removeAll,
-    findByTitle
+    findByTitle,
 };
 
 export default DocService;

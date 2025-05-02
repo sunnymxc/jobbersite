@@ -10,11 +10,13 @@ class CustomUserManager(BaseUserManager):
 
     def create_user(self, email, first_name, last_name, password=None):
         if not email:
-            raise ValueError('Users must have an email address')
+            raise ValueError('Users must have a valid email address')
         
         email = self.normalize_email(email)
         user = self.model(email=email, first_name=first_name, last_name=last_name)
 
+        # user.is_staff=False
+        user.is_active = True
         user.set_password(password)
         user.save()
 
@@ -29,7 +31,6 @@ class CustomUserManager(BaseUserManager):
         
         email = self.normalize_email(email)
         user = self.model(email=email, first_name=first_name, last_name=last_name)
-        user.is_admin = True
         user.is_active = True
         user.is_staff=True
         user.is_superuser=True

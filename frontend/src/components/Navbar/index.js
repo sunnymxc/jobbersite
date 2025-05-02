@@ -5,6 +5,7 @@ import { IconContext } from 'react-icons/lib';
 import { animateScroll as scroll } from 'react-scroll';
 import { logout } from '../../actions/auth';
 import Dropdown from '../Dropdown';
+import TortoiseSVG from '../../assets/tortoise.svg';
 import {
   Nav, 
   NavbarContainer, 
@@ -21,17 +22,29 @@ const Navbar = ({ logout, isAuthenticated, toggle }) => {
 
   const guestLinks = () => (
     <Fragment>
-        <NavItem>
-          <NavLinks to='signup'
-            smooth={true} duration={500} spy={true} 
-            exact='true' offset={-80}
-          >
-            Sign Up
-          </NavLinks>
-        </NavItem>
-        <NavBtn>
-          <NavBtnLink to="/login">Sign In</NavBtnLink>
-        </NavBtn>
+     {/*<NavItem>
+        <NavLinks to='doc'
+          smooth={true} duration={500} spy={true} 
+          exact='true' offset={-80}
+        >
+          Academy
+        </NavLinks>
+        <NavLinks to='property'
+          smooth={true} duration={500} spy={true} 
+          exact='true' offset={-80}
+        >
+          Job List
+        </NavLinks>
+        <NavLinks to='invest'
+          smooth={true} duration={500} spy={true} 
+          exact='true' offset={-80}
+        >
+          Events
+        </NavLinks>
+      </NavItem> */}
+      <NavBtn>
+        <NavBtnLink to="http://127.0.0.1:8000/admin/">RECRUITER DASHBOARD</NavBtnLink>
+      </NavBtn>
     </Fragment> 
   );
 
@@ -66,7 +79,7 @@ const Navbar = ({ logout, isAuthenticated, toggle }) => {
       <IconContext.Provider value={{ color: '#fff' }}>
         <Nav scrollNav={scrollNav}>
             <NavbarContainer>
-                <NavLogo to='/' onClick={toggleHome}>BushMarkt</NavLogo>
+                <NavLogo to='/' onClick={toggleHome}><img src={TortoiseSVG} alt="Tortoise Icon" /></NavLogo>
                 <MobileIcon onClick={toggle}>
                   <FaBars />
                 </MobileIcon>

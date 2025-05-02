@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const FooterContainer = styled.footer`
-    background-color: #101522;
+    background-color: black;
 `;
 
 export const FooterWrap = styled.div`
@@ -11,7 +11,7 @@ export const FooterWrap = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 1100px;
+    max-width: 3000px;
     margin: 0 auto;
 `;
 
@@ -35,12 +35,13 @@ export const FooterLinksWrapper = styled.div`
 export const FooterLinkItems = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; // flex-start
     margin: 16px;
     text-align: left;
-    width: 160px;
+    width: 20rem;
     box-sizing: border-box;
     color: #fff;
+    gap: 20px;
 
     @media screen and (max-width: 420px) {
         margin: 0;
@@ -66,8 +67,11 @@ export const FooterLink = styled(Link)`
     }
 `;
 
+export const FooterInput = styled.input`
+
+`;
+
 export const SocialMedia = styled.section`
-    max-width: 1000px;
     width: 100%;
 `;
 
@@ -75,7 +79,7 @@ export const SocialMediaWrap = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1100px;
+    max-width: 3000px;
     margin: 40px auto 0 auto;
 
     @media screen and (max-width: 820px) {
@@ -98,13 +102,14 @@ export const SocialLogo = styled(Link)`
 export const WebsiteRights = styled.small`
     color: #fff;
     margin-bottom: 16px;
+    font-family: stencil, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;
 
 export const SocialIcons = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 240px;
+    width: 120px;
 `;
 
 export const SocialIconLink = styled.a`

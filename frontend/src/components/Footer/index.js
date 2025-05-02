@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaInstagram, FaYoutube, FaTwitter } from 'react-icons/fa';
+import { FaWhatsapp, FaTelegram } from 'react-icons/fa';
 import { animateScroll as scroll } from 'react-scroll';
 import { 
     FooterContainer, 
@@ -9,9 +9,9 @@ import {
     FooterLinkItems,
     FooterLinkTitle,
     FooterLink, 
+    FooterInput,
     SocialMedia,
     SocialMediaWrap,
-    SocialLogo,
     WebsiteRights,
     SocialIcons,
     SocialIconLink,
@@ -29,15 +29,14 @@ const Footer = () => {
                     <FooterLinksContainer>
                         <FooterLinksWrapper>
                             <FooterLinkItems>
-                                <FooterLinkTitle>JOIN US</FooterLinkTitle>
-                                <FooterLink to='/login'>Client</FooterLink>
-                                <FooterLink to='/card'>Freelancer</FooterLink>
-                                <FooterLink to=''>Login</FooterLink>
-                                <FooterLink to=''>Register</FooterLink>
+                                <FooterLinkTitle>SUBSCRIBE TO GET THE GIST FOR LATEST JOBS</FooterLinkTitle>
+                                <FooterLink>
+                                    <FooterInput placeholder="example.com"></FooterInput>
+                                </FooterLink>
+                                <FooterLink>RECRUITERS LOGIN</FooterLink>
                             </FooterLinkItems>
-                            <FooterLinkItems>
+                            {/*<FooterLinkItems>
                                 <FooterLinkTitle>TERMS OF SERVICE</FooterLinkTitle>
-                                <FooterLink to='/login'>Docs</FooterLink>
                                 <FooterLink to='/card'>T & Cs</FooterLink>
                                 <FooterLink to='/login'>File an Appeal</FooterLink>
                                 <FooterLink to='/login'>Services</FooterLink>
@@ -47,35 +46,32 @@ const Footer = () => {
                         <FooterLinksWrapper>
                             <FooterLinkItems>
                                 <FooterLinkTitle>BUSINESSES</FooterLinkTitle>
-                                <FooterLink to='/login'>Jobs</FooterLink>
-                                <FooterLink to='/card'>Business Cards</FooterLink>
-                                <FooterLink to='/login'>Terms of Service</FooterLink>
-                                <FooterLink to='/login'>Services</FooterLink>
-                                <FooterLink to='/login'>FAQs</FooterLink>
+                                <FooterLink to='/login'>Academy</FooterLink>
+                                <FooterLink to='/card'>Property Catalogue</FooterLink>
+                                <FooterLink to='/login'>Investment</FooterLink>
+                                <FooterLink to='/login'>Careers</FooterLink>
                             </FooterLinkItems>
                             <FooterLinkItems>
                                 <FooterLinkTitle>SOCIAL MEDIA</FooterLinkTitle>
                                 <FooterLink to='/card'>Facebook</FooterLink>
                                 <FooterLink to='/login'>Twitter</FooterLink>
-                            </FooterLinkItems>
+                                <FooterLink to='/login'>Instagram</FooterLink>
+                            </FooterLinkItems> */}
                         </FooterLinksWrapper>
                     </FooterLinksContainer>
                     <SocialMedia>
                         <SocialMediaWrap>
-                            <SocialLogo to='/' onClick={toggleHome}>
-                                BUSHMARKT
-                            </SocialLogo>
-                            <WebsiteRights>BushMarkt © {new Date().getFullYear()} All rights reserved</WebsiteRights>
+                            <WebsiteRights>MYJOBWISE.com © {new Date().getFullYear()} All rights reserved</WebsiteRights>
                             <SocialIcons>
                                 <SocialIconLink href="/" target="_blank"
-                                    aria-label="Facebook"
-                                >
-                                    <FaFacebook />
+                                    aria-label="Whatsapp"
+                                >  
+                                    <FaWhatsapp />
                                 </SocialIconLink>
                                 <SocialIconLink href="//www.twitter.com/" target="_blank"
-                                    aria-label="Twitter"
-                                >
-                                    <FaTwitter />
+                                    aria-label="Telegram"
+                                >  
+                                    <FaTelegram />
                                 </SocialIconLink>
                             </SocialIcons>
                         </SocialMediaWrap>

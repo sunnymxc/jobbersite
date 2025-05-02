@@ -25,16 +25,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ('pk',  'user', 'specialty', 'pic', 'headline', 'overview')
 
-class CertSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cert
-        fields = ('pk', 'name', 'desc', 'date', 'created_at')
-
-class EmploymentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Employment
-        fields = ('pk', 'name', 'position', 'desc', 'start_date', 'end_date')
-
 class LangSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lang
@@ -49,11 +39,6 @@ class IdentitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Identity
         fields = ('pk', 'id_card', 'status', 'country', 'state', 'address')
-
-class BusinessSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Business
-        fields = ('pk', 'biz', 'biz_name')
 
 class BadgeSerializer(serializers.ModelSerializer):
     class Meta:

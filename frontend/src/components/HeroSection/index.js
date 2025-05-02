@@ -27,10 +27,11 @@ const HeroSection = () => {
                 <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
             </HeroBg>
             <HeroContent>         
-                <HeroH1>Lookup and Hiring Services Made Easy</HeroH1>
+                <HeroH1>
+                    Find Your Next Job
+                </HeroH1>
                 <HeroP>
-                    Sign up for a new account today to recieve $30 free 
-                    towards your next payment.
+                    Super Charge Your Career
                 </HeroP>
                 <HeroBtnWrapper>
                     <Button 

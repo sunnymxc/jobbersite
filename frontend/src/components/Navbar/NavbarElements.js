@@ -3,7 +3,7 @@ import { Link as LinkR } from 'react-router-dom';
 import { Link as LinkS } from 'react-scroll';
 
 export const Nav = styled.nav`
-    background: ${({scrollNav}) => (scrollNav ? '#000' : 'transparent')};
+    background: ${({scrollNav}) => (scrollNav ? 'black' : 'transparent')};
     height: 80px;
     width: 100%;
     margin-top: -80px;
@@ -24,22 +24,30 @@ export const NavbarContainer = styled.div`
     font-family: 'stencil', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 80px;
     z-index: 1;
     width: 100%;
     padding: 0 24px;
-    max-width: 1200px;
+    font-size: clamp(1.5rem, -1rem + 4vw, 2rem);
 `;
 
-export const NavLogo = styled(LinkR)`
-    color: #fff; 
-    justify-self: flex-start;
-    cursor: pointer;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    text-decoration: none;
+export const NavLogo = styled(LinkR).attrs({ // Use LinkR as the base component
+  // to: '/', // Specify the route you want to link to
+})`
+  img { // Target the img tag within the LinkR
+    width: 00px;
+    height: 150px;
+  }
+  margin-left: -40px;
+
+  @media (max-width: 768px) { // Adjust breakpoint as needed
+    img {
+      width: 200px; // Adjust width for mobile
+      height: 100px; // Adjust height for mobile
+    }
+    margin-left: -20px; // Remove left margin for mobile
+  }
 `;
 
 export const MobileIcon = styled.div`
@@ -62,14 +70,13 @@ export const NavMenu = styled.ul`
     align-items: center;
     list-style: none;
     text-align: center;
-    margin-right: -22px;
 
-    @media screen and (max-width: 768px) {
-        display: none;
-    }
+    
 `;
 
 export const NavItem = styled.li`
+    display: flex;
+    text-align: center;
     height: 80px;
 `;
 
@@ -81,7 +88,11 @@ export const NavLinks = styled(LinkS)`
     padding: 0 1rem;
     height: 100%;
     cursor: pointer;
+    font-size: clamp(1rem, -2rem + 4vw, 1.5rem);
 
+    @media (max-width: 767px) {
+        display: none;
+    }
     &.active {
         border-bottom: 3px solid #01bf71;
     }
@@ -101,7 +112,7 @@ export const NavBtnLink = styled(LinkR)`
    background: #01bf71;
    white-space: nowrap;
    padding: 8px 32px;
-   color: #010606;
+   color: white;
    font-size: 16px;
    outline: none;
    border: none;

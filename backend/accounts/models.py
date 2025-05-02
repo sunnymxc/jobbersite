@@ -46,7 +46,7 @@ class CustomUser(AbstractUser, PermissionsMixin):
     email = models.EmailField(_('Email Address'), max_length=255, unique=True)
 
     is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
+    is_recruiter = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
 
@@ -61,14 +61,6 @@ class CustomUser(AbstractUser, PermissionsMixin):
 
     REQUIRED_FIELDS = ['first_name', 'last_name']
     
-    username = models.CharField(max_length=255, null=True, blank=True, unique=True)
-
-    client = models.BooleanField()
-
-    freelancer = models.BooleanField()
-
-    status = models.BooleanField(default=True)
-
     class Meta:
         verbose_name = u'User'
         verbose_name_plural = u'Users'
@@ -93,39 +85,6 @@ class Profile(models.Model):
     class Meta:
         verbose_name = u'Profile'
         verbose_name_plural = u'Profiles'
-
-class Cert(models.Model):
-    user = models.ForeignKey(CustomUser, related_name='user_cert', on_delete=models.CASCADE)
-    
-    name = models.CharField()
-
-    desc = models.TextField()
-
-    date = models.DateField()
-
-    class Meta:
-        verbose_name = u'Certificate'
-        verbose_name_plural = u'Certificates'
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-class Employment(models.Model):
-    user = models.ForeignKey(CustomUser, related_name='user_employment', on_delete=models.CASCADE)
-
-    
-    name = models.CharField(max_length=255)
-
-    position = models.CharField(max_length=255)
-
-    desc = models.TextField()
-
-    start_date = models.DateField()
-
-    end_date = models.DateField()
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
 class LangType(models.Model):
     name = models.CharField(max_length=255)
@@ -188,20 +147,6 @@ class Identity(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class Business(models.Model):
-    user = models.OneToOneField(CustomUser, related_name='user_business', on_delete=models.CASCADE)
-    
-    INDIVIDUAL = 'Individual'
-    CORPORATE = 'Corporate'
-    BIZ_CHOICES = (
-        (INDIVIDUAL, 'Individual'),
-        (CORPORATE, 'Corporate'),
-    )
-
-    biz = models.CharField(max_length=20, choices=BIZ_CHOICES, default=INDIVIDUAL)
-
-    biz_name = models.CharField(max_length=255, null=True, blank=True)
-
 
 class Badge(models.Model):
     user = models.OneToOneField(CustomUser, related_name='user_badge', on_delete=models.CASCADE)
@@ -217,16 +162,6 @@ class Badge(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class Point(models.Model):
-    user = models.OneToOneField(CustomUser, related_name='user_point', on_delete=models.CASCADE)
-
-    amount = models.IntegerField()
-
-class Transaction(models.Model):
-    point = models.ForeignKey(Point, related_name='point_transaction', on_delete=models.CASCADE, blank=True)
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
 
 

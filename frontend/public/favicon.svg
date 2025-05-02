@@ -1,0 +1,13 @@
+<svg width="32" height="32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .shell { fill: #8B4513; } /* Saddle brown */
+    .head { fill: #9ACD32; } /* Yellow green */
+    .leg { fill: #9ACD32; }
+    .eye { fill: black; }
+  </style>
+  <path class="shell" d="M50,10 C25,10 10,30 10,55 C10,80 70,80 70,55 C70,30 55,10 50,10 Z" />
+  <circle class="head" cx="80" cy="50" r="20" />
+  <circle class="eye" cx="85" cy="45" r="5" />
+  <rect class="leg" x="20" y="70" width="15" height="10" rx="5" />
+  <rect class="leg" x="65" y="70" width="15" height="10" rx="5" />
+</svg>

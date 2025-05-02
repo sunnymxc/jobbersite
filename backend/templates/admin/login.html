@@ -1,0 +1,130 @@
+{% extends 'admin/login.html' %}
+
+{% block title %}MyJobWise ADMIN{% endblock %}
+
+{% block branding %}
+<div class="retro-header">
+    MyJobWise Administration
+</div>
+{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background-color: #f0e68c;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .login-container {
+    background-color: #8fbc8f;
+    padding: 30px;
+    border: 5px double #b8860b;
+    border-radius: 10px;
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.3);
+    width: 350px;
+    text-align: center;
+    color: #333;
+  }
+
+  /* Desktop Styles */
+  @media (min-width: 768px) {
+    .login-container {
+      width: 500px;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 2.2em;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      padding: 12px;
+      font-size: 1.1em;
+    }
+
+    button[type="submit"] {
+      padding: 12px 25px;
+      font-size: 1.1em;
+    }
+  }
+
+  .retro-header{
+        font-size: 2em;
+        font-weight: bold;
+        color: #b8860b;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  form p {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 8px;
+    border: 2px solid #b8860b;
+    border-radius: 5px;
+    background-color: #f0f0f0; /* Slightly darker background */
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+  }
+
+  button[type="submit"] {
+    background-color: #b8860b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  button[type="submit"]:hover {
+    background-color: #daa520;
+  }
+
+  .errorlist {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    color: #ff0000;
+    text-align: left;
+  }
+
+  .errorlist li {
+    font-size: 0.9em;
+  }
+</style>
+
+<div class="login-container">
+    <h1>MyJobWise Admin</h1>
+    <form method="post" action="{% url 'admin:login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+</div>
+{% endblock %}
