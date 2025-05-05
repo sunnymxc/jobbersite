@@ -43,7 +43,7 @@ const Navbar = ({ logout, isAuthenticated, toggle }) => {
         </NavLinks>
       </NavItem> */}
       <NavBtn>
-        <NavBtnLink to="http://127.0.0.1:8000/admin/">RECRUITER DASHBOARD</NavBtnLink>
+        {/*<NavBtnLink to="http://127.0.0.1:8000/admin/">RECRUITER DASHBOARD</NavBtnLink>*/}
       </NavBtn>
     </Fragment> 
   );

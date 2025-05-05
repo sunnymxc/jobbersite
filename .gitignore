@@ -1,2 +1,4 @@
-mobile/
+# Ignore node_modules
 frontend/node_modules
+# ignore django project settings
+backend/config/settings
