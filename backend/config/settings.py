@@ -105,23 +105,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-<<<<<<< HEAD
-        'NAME': 'jobbuiuo_jobbersite',
-        'USER': 'jobbuiuo_jobbuiuo',
-        'PASSWORD': '9951Simon#xyz',
-=======
         'NAME': 'jobbersite',
         'USER': 'Enenche95',
         'PASSWORD': '9951Simon#',
->>>>>>> f2e32916462a0d715acc3a9f793f6c64734a8ddc
         'HOST': 'localhost',
         'PORT': '3306',              # The default MySQL port is 3306
         'OPTIONS': {
             'charset': 'utf8mb4',     # Recommended character set
-<<<<<<< HEAD
-=======
-            'init_command': "SET time_zone = '+00:00'"
->>>>>>> f2e32916462a0d715acc3a9f793f6c64734a8ddc
         },
     }
 }
