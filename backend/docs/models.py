@@ -1,6 +1,5 @@
 from django.db import models
 from django.db.models import Q
-from django.contrib.postgres.fields import ArrayField
 from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
@@ -26,7 +25,7 @@ class Category(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
-        base_slug = slugify(f"{self.id} {""} {self.name}") # Removed discipline from slug
+        base_slug = slugify(f"{self.id} {self.name}") # Removed discipline from slug
 
         self.slug = base_slug
 
@@ -58,7 +57,7 @@ class Discipline(models.Model):
     slug = models.SlugField(unique=True, blank=True, max_length=255)
 
     def save(self, *args, **kwargs):
-        base_slug = slugify(f"{id}{""}{self.name}") # Removed discipline from slug
+        base_slug = slugify(f"{id} {self.name}") # Removed discipline from slug
 
         self.slug = base_slug
 

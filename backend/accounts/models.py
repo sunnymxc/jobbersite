@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
-from  django.contrib.postgres.fields import ArrayField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
@@ -43,7 +42,7 @@ class Specialty(models.Model):
 
 
 class CustomUser(AbstractUser, PermissionsMixin):
-    email = models.EmailField(_('Email Address'), max_length=255, unique=True)
+    email = models.EmailField(_('Email Address'), max_length=150, unique=True)
 
     is_active = models.BooleanField(default=True)
     is_recruiter = models.BooleanField(default=False)
@@ -134,9 +133,9 @@ class Identity(models.Model):
     
     status = models.BooleanField(default=False)
 
-    country = models.CharField()
+    country = models.CharField(max_length=255)
 
-    state = models.CharField()
+    state = models.CharField(max_length=255)
 
     address = models.TextField(max_length=255)
     

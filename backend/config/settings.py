@@ -60,7 +60,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'social_django.middleware.SocialAuthExceptionMiddleware',
+    #'social_django.middleware.SocialAuthExceptionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -104,11 +104,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'psyzmik',
-        'USER': 'postgres',
-        'PASSWORD': '9951',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'jobbersite',
+        'USER': 'Enenche95',
+        'PASSWORD': '9951Simon#',
         'HOST': 'localhost',
+        'PORT': '3306',              # The default MySQL port is 3306
+        'OPTIONS': {
+            'charset': 'utf8mb4',     # Recommended character set
+            'init_command': "SET time_zone = '+00:00'"
+        },
     }
 }
 
@@ -144,8 +149,6 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
-
 USE_TZ = True
 
 
@@ -176,7 +179,7 @@ REST_FRAMEWORK = {
 }
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.google.GoogleOAuth2',
+    #'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
