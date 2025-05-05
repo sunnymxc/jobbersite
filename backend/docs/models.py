@@ -26,7 +26,7 @@ class Category(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
-        base_slug = slugify(f"{self.id} {""} {self.name}") # Removed discipline from slug
+        base_slug = slugify(f"{self.id} {self.name}")
 
         self.slug = base_slug
 
@@ -58,7 +58,7 @@ class Discipline(models.Model):
     slug = models.SlugField(unique=True, blank=True, max_length=255)
 
     def save(self, *args, **kwargs):
-        base_slug = slugify(f"{id}{""}{self.name}") # Removed discipline from slug
+        base_slug = slugify(f"{id} {self.name}") # Removed discipline from slug
 
         self.slug = base_slug
 

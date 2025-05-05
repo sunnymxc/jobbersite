@@ -104,11 +104,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'psyzmik',
-        'USER': 'postgres',
-        'PASSWORD': '9951',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'jobbuiuo_jobbersite',
+        'USER': 'jobbuiuo_jobbuiuo',
+        'PASSWORD': '9951Simon#xyz',
         'HOST': 'localhost',
+        'PORT': '3306',              # The default MySQL port is 3306
+        'OPTIONS': {
+            'charset': 'utf8mb4',     # Recommended character set
+        },
     }
 }
 
@@ -158,7 +162,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = '/home/jobbuiuo/jobbersite/backend/static'
 
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Or wherever you want to store media
