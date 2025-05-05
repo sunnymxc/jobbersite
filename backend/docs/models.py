@@ -25,7 +25,11 @@ class Category(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
+<<<<<<< HEAD
+        base_slug = slugify(f"{self.id} {self.name}")
+=======
         base_slug = slugify(f"{self.id} {self.name}") # Removed discipline from slug
+>>>>>>> f2e32916462a0d715acc3a9f793f6c64734a8ddc
 
         self.slug = base_slug
 
