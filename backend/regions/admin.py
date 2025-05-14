@@ -8,7 +8,7 @@ class CountryAdmin(admin.ModelAdmin):
 class StateAdmin(admin.ModelAdmin):
     list_display = ('name', 'country')  # Display image preview
     #readonly_fields = ('',)  # Make image preview read-only
-    exclude = ('',)
+    exclude = ('slug',)
     
 
 # Register your models here.

@@ -2,6 +2,8 @@ from django.db import models
 from django.db.models import Q
 from django.utils.text import slugify
 
+import random, string, logging, uuid
+
 # Create your models here.
 
 class Country(models.Model):
@@ -9,18 +11,25 @@ class Country(models.Model):
 
     slug = models.SlugField(unique=True, blank=True)
 
+    def generate_unique_slug(self, base_slug, max_length=100):
+        unique_slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"  # Combine title and UUID
+
+        if self.__class__.objects.filter(slug=unique_slug).exists():
+            # If slug exists, try generating a new one with more random characters.
+            unique_slug = f"{base_slug}-{uuid.uuid4().hex[:12]}"
+
+        return unique_slug[:max_length]
+
     def save(self, *args, **kwargs):
-    # Generate a base slug
-        self.slug = slugify(f"{self.id}{" "}{self.name}")
-        # Check for existing slugs with the same base
-        existing_slugs = self.__class__.objects.filter(Q(slug__startswith=self.slug) & ~Q(slug=self.slug))
-        # Append a unique counter if duplicates exist
-        count = 1
-        while existing_slugs.exists():
-            self.slug = f"{base_slug}-{count}"
-            count += 1
-            existing_slugs = self.__class__.objects.filter(Q(slug__startswith=base_slug) & ~Q(slug=base_slug))
-        # Call super().save() after generating a unique slug
+        if not self.slug:
+            base_slug = slugify(self.name)
+            self.slug = self.generate_unique_slug(base_slug)
+
+        # Still check if the generated slug already exists before saving
+        if self.__class__.objects.filter(slug=self.slug).exclude(pk=self.pk).exists():
+            # If a duplicate slug exists, generate a new one
+            self.slug = self.generate_unique_slug(base_slug)
+
         super().save(*args, **kwargs)
     
     def __str__(self):
@@ -38,18 +47,25 @@ class State(models.Model):
 
     slug = models.SlugField(unique=True, blank=True)
 
+    def generate_unique_slug(self, base_slug, max_length=100):
+        unique_slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"  # Combine title and UUID
+
+        if self.__class__.objects.filter(slug=unique_slug).exists():
+            # If slug exists, try generating a new one with more random characters.
+            unique_slug = f"{base_slug}-{uuid.uuid4().hex[:12]}"
+
+        return unique_slug[:max_length]
+
     def save(self, *args, **kwargs):
-        # Generate a base slug
-        self.slug = slugify(f"{self.country.name}{" "}{self.name}")
-        # Check for existing slugs with the same base
-        existing_slugs = self.__class__.objects.filter(Q(slug__startswith=self.slug) & ~Q(slug=self.slug))
-        # Append a unique counter if duplicates exist
-        count = 1
-        while existing_slugs.exists():
-            self.slug = f"{base_slug}-{count}"
-            count += 1
-            existing_slugs = self.__class__.objects.filter(Q(slug__startswith=base_slug) & ~Q(slug=base_slug))
-        # Call super().save() after generating a unique slug
+        if not self.slug:
+            base_slug = slugify(self.name)
+            self.slug = self.generate_unique_slug(base_slug)
+
+        # Still check if the generated slug already exists before saving
+        if self.__class__.objects.filter(slug=self.slug).exclude(pk=self.pk).exists():
+            # If a duplicate slug exists, generate a new one
+            self.slug = self.generate_unique_slug(base_slug)
+
         super().save(*args, **kwargs)
     
     def __str__(self):

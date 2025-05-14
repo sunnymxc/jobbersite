@@ -7,7 +7,6 @@ from django.utils.html import format_html
 
 from django import forms
 from tinymce.models import HTMLField
-from django_select2.forms import Select2MultipleWidget
 
 import random, string, logging, uuid
 logger = logging.getLogger(__name__)
@@ -24,24 +23,24 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
+    def generate_unique_slug(self, base_slug, max_length=100):
+        unique_slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"  # Combine title and UUID
+
+        if self.__class__.objects.filter(slug=unique_slug).exists():
+            # If slug exists, try generating a new one with more random characters.
+            unique_slug = f"{base_slug}-{uuid.uuid4().hex[:12]}"
+
+        return unique_slug[:max_length]
+
     def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.name)
+            self.slug = self.generate_unique_slug(base_slug)
 
-        base_slug = slugify(f"{self.id} {self.name}") # Removed discipline from slug
-
-        self.slug = base_slug
-
-        existing_slugs = self.__class__.objects.filter(Q(slug__startswith=self.slug) & ~Q(slug=self.slug))
-
-        count = 1
-        max_iterations = 100
-        while existing_slugs.exists() and count <= max_iterations:
-            random_suffix = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
-            self.slug = f"{base_slug}-{random_suffix}"
-            count += 1
-            existing_slugs = self.__class__.objects.filter(Q(slug__startswith=base_slug) & ~Q(slug=self.slug))
-
-        if count > max_iterations:
-            logger.warning(f"Max slug generation iterations reached for {base_slug}")
+        # Still check if the generated slug already exists before saving
+        if self.__class__.objects.filter(slug=self.slug).exclude(pk=self.pk).exists():
+            # If a duplicate slug exists, generate a new one
+            self.slug = self.generate_unique_slug(base_slug)
 
         super().save(*args, **kwargs)
 
@@ -57,23 +56,24 @@ class Discipline(models.Model):
 
     slug = models.SlugField(unique=True, blank=True, max_length=255)
 
+    def generate_unique_slug(self, base_slug, max_length=100):
+        unique_slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"  # Combine title and UUID
+
+        if self.__class__.objects.filter(slug=unique_slug).exists():
+            # If slug exists, try generating a new one with more random characters.
+            unique_slug = f"{base_slug}-{uuid.uuid4().hex[:12]}"
+
+        return unique_slug[:max_length]
+
     def save(self, *args, **kwargs):
-        base_slug = slugify(f"{id} {self.name}") # Removed discipline from slug
+        if not self.slug:
+            base_slug = slugify(self.name)
+            self.slug = self.generate_unique_slug(base_slug)
 
-        self.slug = base_slug
-
-        existing_slugs = self.__class__.objects.filter(Q(slug__startswith=self.slug) & ~Q(slug=self.slug))
-
-        count = 1
-        max_iterations = 100
-        while existing_slugs.exists() and count <= max_iterations:
-            random_suffix = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
-            self.slug = f"{base_slug}-{random_suffix}"
-            count += 1
-            existing_slugs = self.__class__.objects.filter(Q(slug__startswith=base_slug) & ~Q(slug=self.slug))
-
-        if count > max_iterations:
-            logger.warning(f"Max slug generation iterations reached for {base_slug}")
+        # Still check if the generated slug already exists before saving
+        if self.__class__.objects.filter(slug=self.slug).exclude(pk=self.pk).exists():
+            # If a duplicate slug exists, generate a new one
+            self.slug = self.generate_unique_slug(base_slug)
 
         super().save(*args, **kwargs)
 

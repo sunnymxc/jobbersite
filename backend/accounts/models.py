@@ -4,7 +4,6 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 from .managers import CustomUserManager
-
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -40,26 +39,21 @@ class Specialty(models.Model):
         verbose_name_plural = u'Specialties'
         ordering = ('name',)
 
-
-class CustomUser(AbstractUser, PermissionsMixin):
+class CustomUser(AbstractUser):
     email = models.EmailField(_('Email Address'), max_length=150, unique=True)
-
     is_active = models.BooleanField(default=True)
-    is_recruiter = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-
     objects = CustomUserManager()
 
     first_name = models.CharField(max_length=200)
-
     last_name = models.CharField(max_length=200)
-    
+
     def __str__(self):
         return self.first_name + " " + self.last_name
 
     REQUIRED_FIELDS = ['first_name', 'last_name']
-    
+
     class Meta:
         verbose_name = u'User'
         verbose_name_plural = u'Users'
@@ -67,6 +61,7 @@ class CustomUser(AbstractUser, PermissionsMixin):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    
 class Profile(models.Model):
     user = models.ForeignKey('accounts.CustomUser', related_name='user_profile', on_delete=models.CASCADE, blank=True)
 
