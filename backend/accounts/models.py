@@ -45,7 +45,6 @@ class CustomUser(AbstractUser, PermissionsMixin):
     email = models.EmailField(_('Email Address'), max_length=150, unique=True)
 
     is_active = models.BooleanField(default=True)
-    is_recruiter = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
 
