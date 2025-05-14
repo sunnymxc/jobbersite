@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure--#u1m6)ui^2(f$$+&(tm4s9_m02e*%!)ip&7z5zxz4t4ybzci4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["jobbersite.com", "www.jobbersite.com"]
 
 SITE_ID = 1
 
@@ -78,7 +78,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, '../frontend/build'),  # Your frontend build directory
             os.path.join(BASE_DIR, 'templates'),          # Your dedicated templates directory
         ],        
         'APP_DIRS': True,
@@ -98,23 +97,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jobbersite',
-        'USER': 'Enenche95',
-        'PASSWORD': '9951Simon#',
+        'NAME': 'jobbuiuo_jobbersite',
+        'USER': 'jobbuiuo_jobbuiuo',
+        'PASSWORD': '9951Simon#xyz',
         'HOST': 'localhost',
         'PORT': '3306',              # The default MySQL port is 3306
         'OPTIONS': {
             'charset': 'utf8mb4',     # Recommended character set
+            'sql_mode': 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION',
         },
     }
 }
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -148,23 +148,26 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
+USE_T18N = True
+
+USE_L10N = True
 USE_TZ = False
 
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static'),
-    BASE_DIR / 'static',
+    os.path.join(BASE_DIR, "../frontend", "build", "static"),
 ]
 
-STATIC_ROOT = '/home/jobbuiuo/jobbersite/backend/static'
+STATIC_ROOT = '/home/jobbuiuo/public_html/staticfiles'
 
 # Media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Or wherever you want to store media
 MEDIA_URL = '/media/'  # URL for accessing media files
+MEDIA_ROOT = '/home/jobbuiuo/jobbersite.com/media'  # Or wherever you want to store media
 
 # Rest Framework JWT Auth System
 
@@ -221,13 +224,13 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Replace with your React app's development URL
+    "https://jobbersite.com",  # Replace with your React app's development URL
 ] 
 
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 INTERNAL_IPS = [
-    "127.0.0.1",
+    "https://jobbersite.com",
 ]
 
 LOGIN_REDIRECT_URL = '/admin/'

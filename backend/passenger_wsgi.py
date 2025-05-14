@@ -5,5 +5,5 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 
-wsgi = imp.load_source('wsgi', 'passenger_wsgi.py')
+wsgi = imp.load_source('wsgi', 'config/wsgi.py')
 application = wsgi.application

@@ -2,7 +2,7 @@ from django.contrib import admin
 from .forms import PostForm
 from django.utils.html import format_html
 
-admin.site.site_header = "MyJobWise Administration"  # Replace with your desired header
+admin.site.site_header = "Jobbersite.com Admin"  # Replace with your desired header
 
 from .models import *
 
@@ -55,12 +55,12 @@ class PostAdmin(admin.ModelAdmin):
         }
 
 class CategoryAdmin(admin.ModelAdmin):
-    exclude = ('',)
+    exclude = ('slug',)
 
 class DisciplineAdmin(admin.ModelAdmin):
     list_display = ('name', 'category')
     ordering = ['category']
-    exclude = ('',)
+    exclude = ('slug',)
 
 class GalleryAdmin(admin.ModelAdmin):
     list_display = ('name', 'image_preview')  # Display image preview
