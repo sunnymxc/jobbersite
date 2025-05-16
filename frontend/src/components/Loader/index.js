@@ -1,11 +1,14 @@
-import React from "react";
-import LoadingIcons from 'react-loading-icons';
+import React from 'react';
+import { Cogwheel, LoaderContainer } from './LoaderElements';
 
+const JobLoader = () => {
+  return (
+    <LoaderContainer>
+      <Cogwheel size={50} speed={1.2}>⚙️</Cogwheel>
+      <Cogwheel size={60} speed={1.5}>⚙️</Cogwheel>
+      <Cogwheel size={55} speed={1.8}>⚙️</Cogwheel>
+    </LoaderContainer>
+  );
+};
 
-export const Loader = () => {
-    return (
-        <div>
-            <LoadingIcons.Bars />
-        </div>
-    )
-}
+export default JobLoader;

@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure--#u1m6)ui^2(f$$+&(tm4s9_m02e*%!)ip&7z5zxz4t4ybzci4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["jobbersite.com", "www.jobbersite.com"]
+ALLOWED_HOSTS = ['*']
 
 SITE_ID = 1
 
@@ -103,14 +103,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jobbuiuo_jobbersite',
-        'USER': 'jobbuiuo_jobbuiuo',
-        'PASSWORD': '9951Simon#xyz',
+        'NAME': 'jobbersite',
+        'USER': 'Enenche95',
+        'PASSWORD': '9951Simon#',
         'HOST': 'localhost',
         'PORT': '3306',              # The default MySQL port is 3306
         'OPTIONS': {
             'charset': 'utf8mb4',     # Recommended character set
-            'sql_mode': 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION',
         },
     }
 }
@@ -152,7 +151,7 @@ USE_T18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -162,11 +161,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "../frontend", "build", "static"),
 ]
 
-STATIC_ROOT = '/home/jobbuiuo/public_html/staticfiles'
+STATIC_ROOT = '/staticfiles'
 
 # Media files
 MEDIA_URL = '/media/'  # URL for accessing media files
-MEDIA_ROOT = '/home/jobbuiuo/jobbersite.com/media'  # Or wherever you want to store media
+MEDIA_ROOT = '/media'  # Or wherever you want to store media
 
 # Rest Framework JWT Auth System
 
@@ -223,13 +222,13 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "https://jobbersite.com",  # Replace with your React app's development URL
+    "https://localhost:3000",  # Replace with your React app's development URL
 ] 
 
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 INTERNAL_IPS = [
-    "https://jobbersite.com",
+    "127.0.0",
 ]
 
 LOGIN_REDIRECT_URL = '/admin/'

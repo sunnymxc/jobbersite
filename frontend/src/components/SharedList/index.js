@@ -1,15 +1,15 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React from 'react';
 import Layout from '../../hocs/Layout';
 import dayjs from 'dayjs';
 import {
-    Container, Wrap, Main, Header, Content, Country,
+    Container, Wrap, Main, NotificationView, Header, Content, Country,
     Input, Category, ButtonGroup, Button, Panel, Select, CardGroup,
     Display, Featured, DropdownList, DropdownItem,
     PostItem, PostTitle, PostDesc, PostContent, PostDate, StyledGlobe,
     Paginate, PageButton, PageNumber, FeaturedHeader, FeaturedPaginate, FeaturedPageButton, FeaturedPageNumber,
-    FeaturedGroup
+    FeaturedGroup, Text
 } from './ListElements'; // Import new styled components for featured pagination
-import TortoiseSpinner from '../../assets/TortoiseSpinner';
+import Loader from '../Loader/index';
 
 const SharedList = ({
     countries, selectedCountry, handleCountrySelect,
@@ -18,7 +18,7 @@ const SharedList = ({
     selectedStates, handleStateClick,
     totalPages, currentPage, setCurrentPage, handleDaySelect, selectedDay, selectedDisciplines, handleDisciplineClick,
     dropdownTypes, displayNames, searchTerm, handleSearchChange,
-    totalFeaturedPages, currentFeaturedPage, handleFeaturedPageChange
+    totalFeaturedPages, currentFeaturedPage, handleFeaturedPageChange,
 }) => {
     return (
         <Layout>
@@ -26,6 +26,11 @@ const SharedList = ({
                 <Wrap>
                     <Content>
                         <Main>
+                            {/*
+                            <NotificationView>
+                                <Notification />
+                            </NotificationView> 
+                            */}
                             <Country>
                                 <StyledGlobe />
                                 <Select value={selectedCountry} onChange={handleCountrySelect}>
@@ -40,13 +45,13 @@ const SharedList = ({
                                     <Header>
                                         <Input
                                             type="text"
-                                            placeholder="Search by keywords"
+                                            placeholder="Search by Job Title"
                                             value={searchTerm}
                                             onChange={handleSearchChange}
                                         />
                                     </Header>
                                     <Panel>
-                                        Sort Jobs By
+                                        <FeaturedHeader>Sort Jobs By</FeaturedHeader>
                                         <ButtonGroup>
                                             {dropdownTypes.map(type => (
                                                 <React.Fragment key={type}>
@@ -90,10 +95,10 @@ const SharedList = ({
                                 </Category>
                                 <CardGroup>
                                     {loading.posts ? (
-                                        <TortoiseSpinner />
+                                        <Loader />
                                     ) : error.posts ? (
                                         <p style={{ color: "red" }}>{error.posts}</p>
-                                    ) : posts.length > 0 ? (
+                                    ) : posts.length > 0 ? (                        
                                         posts.map(post => (
                                             <PostItem key={post.id}>
                                                 <PostContent>
@@ -112,15 +117,15 @@ const SharedList = ({
                                             </PostItem>
                                         ))
                                     ) : (
-                                        <p>No posts available.</p>
+                                        <Text>No posts available.</Text>
                                     )}
                                 </CardGroup>
                                 <Featured>
                                     <FeaturedHeader>FEATURED JOBS</FeaturedHeader>
-                                    {loading.posts ? (
-                                        <TortoiseSpinner />
-                                    ) : error.posts ? (
-                                        <p style={{ color: "red" }}>{error.posts}</p>
+                                    {loading.featuredPosts ? (
+                                        <Loader />
+                                    ) : error.featuredPosts ? (
+                                        <p style={{ color: "red" }}>{error.featuredPosts}</p>
                                     ) : featuredPosts && featuredPosts.length > 0 ? (
                                         <FeaturedGroup>
                                             {featuredPosts.map(post => (
@@ -128,16 +133,16 @@ const SharedList = ({
                                                     <PostContent>
                                                         <PostTitle to={`/docs/${post.slug}`}>{post.title}</PostTitle>
                                                         <PostDate>
-                                                            {dayjs(post.publishedDate).format('MMMM D, YYYY')}
+                                                            {dayjs(post.publishedDate).format('MMMM DD, YYYY')}
                                                         </PostDate>
                                                     </PostContent>
                                                 </PostItem>
                                             ))}
                                         </FeaturedGroup>
                                     ) : (
-                                        <p>No featured jobs available.</p>
+                                        <Text>No featured jobs available.</Text>
                                     )}
-                                    {totalFeaturedPages > 1 && (
+                                    {totalFeaturedPages > 12 && (
                                         <FeaturedPaginate>
                                             <FeaturedPageButton
                                                 onClick={() => handleFeaturedPageChange(prev => Math.max(prev - 1, 1))}
@@ -157,11 +162,13 @@ const SharedList = ({
                                         </FeaturedPaginate>
                                     )}
                                 </Featured>
-                                <Paginate>
-                                    <PageButton onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1}>Previous</PageButton>
-                                    <PageNumber>Page {currentPage} of {totalPages}</PageNumber>
-                                    <PageButton onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages}>Next</PageButton>
-                                </Paginate>
+                                {totalPages > 24 && (
+                                    <Paginate>
+                                        <PageButton onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1}>Previous</PageButton>
+                                        <PageNumber>Page {currentPage} of {totalPages}</PageNumber>
+                                        <PageButton onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages}>Next</PageButton>
+                                    </Paginate>
+                                )}
                             </Display>
                         </Main>
                     </Content>

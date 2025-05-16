@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import Error from './components/Error';
 
@@ -10,22 +11,26 @@ import Doc from './components/docs/Doc';
 import { Provider } from 'react-redux';
 import store from './store';
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
     <>
       <Provider store={store}>
-        <Router>
-          
-          <div>
-            <Routes>
-              <Route path="*" element={<Error isNotFound={true} />} />
+        <QueryClientProvider client={queryClient}>
+          <Router>
+            
+            <div>
+              <Routes>
+                <Route path="*" element={<Error isNotFound={true} />} />
 
-              <Route exact path='/' element={<DocsList />} />
-              <Route path='/docs/:slug' element={<Doc />} />
+                <Route exact path='/' element={<DocsList />} />
+                <Route path='/docs/:slug' element={<Doc />} />
 
-            </Routes>
-          </div>
-        </Router>  
+              </Routes>
+            </div>
+          </Router>
+        </QueryClientProvider>  
       </Provider>
     </>
   );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import DocService from '../../services/docs/DocService';
 import SharedDetail from '../SharedDetail';
+import Loader from '../Loader';
 
 const Doc = () => {
   const { slug } = useParams(); // Get the 'id' parameter from the URL
@@ -28,7 +29,7 @@ const Doc = () => {
   }, [slug]); // Update dependency array to use id
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (error) {

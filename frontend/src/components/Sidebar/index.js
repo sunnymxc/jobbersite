@@ -16,12 +16,14 @@ const Sidebar = ({ logout, isAuthenticated, isOpen, toggle }) => {
   const guestLinks = () => (
     <Fragment>
       <SidebarMenu>
-        <SidebarLink to="about" onClick={toggle}>Find Jobs</SidebarLink>
-        <SidebarLink to="business" onClick={toggle}>Events</SidebarLink>
+        <SidebarLink to="/" onClick={toggle}>Find Jobs</SidebarLink>
+        {/*<SidebarLink to="business" onClick={toggle}>Events</SidebarLink>*/}
       </SidebarMenu>
+      {/*
       <SideBtnWrap>
         <SidebarRoute to="/login" onClick={toggle}>Sign In</SidebarRoute>
       </SideBtnWrap>
+      */}
     </Fragment> 
   );
 

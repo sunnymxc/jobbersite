@@ -69,6 +69,8 @@ class Notification(models.Model):
 
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)
 
+    slug = models.SlugField(unique=True, blank=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

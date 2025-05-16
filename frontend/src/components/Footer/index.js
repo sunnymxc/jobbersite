@@ -1,15 +1,11 @@
 import React from 'react';
-import { FaWhatsapp, FaTelegram } from 'react-icons/fa';
+import { FaWhatsapp } from 'react-icons/fa';
 import { animateScroll as scroll } from 'react-scroll';
 import { 
     FooterContainer, 
     FooterWrap, 
     FooterLinksContainer, 
     FooterLinksWrapper,
-    FooterLinkItems,
-    FooterLinkTitle,
-    FooterLink, 
-    FooterInput,
     SocialMedia,
     SocialMediaWrap,
     WebsiteRights,
@@ -28,14 +24,13 @@ const Footer = () => {
                 <FooterWrap>
                     <FooterLinksContainer>
                         <FooterLinksWrapper>
-                            <FooterLinkItems>
-                                <FooterLinkTitle>SUBSCRIBE TO GET THE GIST FOR LATEST JOBS</FooterLinkTitle>
+                            {/*<FooterLinkItems>
+                                <FooterLinkTitle>SUBSCRIBE TO NEWSLETTER</FooterLinkTitle>
                                 <FooterLink>
                                     <FooterInput placeholder="example.com"></FooterInput>
                                 </FooterLink>
-                                <FooterLink>RECRUITERS LOGIN</FooterLink>
                             </FooterLinkItems>
-                            {/*<FooterLinkItems>
+                            {/*<FooterLinkItems>/*}
                                 <FooterLinkTitle>TERMS OF SERVICE</FooterLinkTitle>
                                 <FooterLink to='/card'>T & Cs</FooterLink>
                                 <FooterLink to='/login'>File an Appeal</FooterLink>
@@ -61,18 +56,18 @@ const Footer = () => {
                     </FooterLinksContainer>
                     <SocialMedia>
                         <SocialMediaWrap>
-                            <WebsiteRights>MYJOBWISE.com © {new Date().getFullYear()} All rights reserved</WebsiteRights>
+                            <WebsiteRights>Jobbersite.com © {new Date().getFullYear()} All rights reserved</WebsiteRights>
                             <SocialIcons>
-                                <SocialIconLink href="/" target="_blank"
+                                <SocialIconLink href=" https://chat.whatsapp.com/CcEL70cT5JnEEbAh6t3DyN " target="_blank"
                                     aria-label="Whatsapp"
                                 >  
                                     <FaWhatsapp />
                                 </SocialIconLink>
-                                <SocialIconLink href="//www.twitter.com/" target="_blank"
+                                {/*<SocialIconLink href="//www.twitter.com/" target="_blank"
                                     aria-label="Telegram"
                                 >  
                                     <FaTelegram />
-                                </SocialIconLink>
+                                </SocialIconLink>*/}
                             </SocialIcons>
                         </SocialMediaWrap>
                     </SocialMedia>

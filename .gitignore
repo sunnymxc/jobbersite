@@ -1,49 +1,26 @@
-# This .gitignore is for the root of your monorepo (frontend/backend)
+backend/config/settings.py
 
-### Global (applies to both frontend and backend) ###
-Thumbs.db
-*.swp
-*.swo
-*.log
+*/migrations/*
+!*/migrations/__init__.py
+**/migrations/*.pyc
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 npm-debug.log*
+yarn-debug.log*
 yarn-error.log*
-
-### Backend (Django) ###
-backend/env/
-backend/venv/
-backend/ENV/
-backend/.venv/
-backend/__pycache__/
-backend/*.pyc
-backend/*.pyd
-backend/*.sqlite3
-backend/db.sqlite3-*
-backend/config/settings.py
-backend/staticfiles/
-# backend/static/  #  Important:  See note below
-backend/media/ # Consider if you want to track user-uploaded media
-backend/htmlcov/
-backend/.tox/
-backend/.coverage
-backend/*.egg-info
-backend/dist/
-backend/build/
-backend/wheels/
-backend/MANIFEST.in
-backend/*.pid
-backend/*.ini  # If it contains sensitive deployment settings
-backend/.idea/
-backend/.vscode/
-backend/*.sublime-project
-backend/*.sublime-workspace
-
-### Frontend (React) ###
-frontend/node_modules/
-frontend/build/
-frontend/coverage/
-frontend/.env
-frontend/.env.local
-frontend/.env.development.local
-frontend/.env.test.local
-frontend/.env.production.local
-backend/config/settings.py

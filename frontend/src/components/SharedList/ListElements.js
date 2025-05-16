@@ -2,6 +2,10 @@ import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FaGlobe } from 'react-icons/fa';
 
+export const Notifications = styled.div`
+
+`;
+
 export const Container = styled.div`
     padding-top: 40px;
     z-index: -1;
@@ -75,6 +79,11 @@ export const Main = styled.div`
     }
 `;
 
+export const NotificationView = styled.div`
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+`;
+
 export const Select = styled.select`
     margin-left: 1rem;
 
@@ -90,9 +99,7 @@ export const ButtonGroup = styled.div`
     flex-wrap: wrap;
     gap: 0.2rem;
 
-    @media (max-width: 767px) {
-        flex-direction: column; // Stack buttons on mobile
-    }
+   
 `;
 
 export const Button = styled.button`
@@ -114,8 +121,7 @@ export const Button = styled.button`
     }
 
     @media (max-width: 767px) {
-        width: 100%;
-        margin-bottom: 10px;
+        
     }
 `;
 
@@ -364,6 +370,12 @@ export const Country = styled.div`
     align-items: center;
 `;
 
+export const FilterInfo = styled.div`
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+`;
+
 
 export const Paginate = styled.div`
   grid-column: 2 / 3; /* Span from the start of the second column to the end of the third */
@@ -378,6 +390,7 @@ export const Paginate = styled.div`
     @media (max-width: 767px) {
         grid-column: 1; /* Span the full width on mobile */
         grid-row: 3; /* Place it below the CardGroup on mobile */
+        font-size: 0.6rem;
     }
 `;
 
@@ -397,6 +410,10 @@ export const PageButton = styled.button`
   &:hover:not(:disabled) {
     background-color: #eee;
   }
+
+   @media (max-width: 769px) {
+        font-size: 0.6rem;
+    }
 `;
 
 export const PageNumber = styled.span`
@@ -452,7 +469,10 @@ export const TortoiseSVG = styled.svg`
 `;
 
 export const FeaturedPageButton = styled.button`
-
+    
+    @media (max-width: 769px) {
+        font-size: 0.6rem;
+    }
 `;
 
 export const FeaturedPageNumber = styled.span`
@@ -460,6 +480,14 @@ export const FeaturedPageNumber = styled.span`
 `;
 
 export const FeaturedPaginate = styled.div`
+    @media (max-width: 769px) {
+        font-size: 0.6rem;
+    }
+`;
 
+export const Text = styled.span`
+    @media (max-width: 767px) {
+       font-size: 0.8rem;
+    }
 `;
 

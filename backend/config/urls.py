@@ -10,6 +10,7 @@ from accounts.views import *
 from docs.views import *
 from regions.views import *
 from subscribers.views import *
+from notifications.views import *
 
 router = routers.DefaultRouter()
 router.register('categories', CategoryViewSet, 'categories')
@@ -17,6 +18,7 @@ router.register('countries', CountryViewSet, 'countries')
 router.register('states', StateViewSet, 'states')
 router.register('disciplines', DisciplineViewSet, 'disciplines')
 router.register('subscribers', SubscriberViewSet, basename='subscriber')
+router.register('notifications', NotificationViewSet, basename='notification') # Register the NotificationViewSet
 
 # Users api
 router.register('category', CategoryView, 'category')
@@ -39,5 +41,6 @@ urlpatterns = [
     path('api/docs/', PostViewSet.as_view({'get': 'list'})),
     path('api/docs/<slug:slug>/', PostViewSet.as_view({'put': 'update', 'delete': 'destroy'})),
     path('api/subscribers/', SubscriberViewSet.as_view({'get': 'list'}), name='subscriber_list'),
+    *router.urls
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
