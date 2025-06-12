@@ -4,15 +4,24 @@ backend/config/settings.py
 !*/migrations/__init__.py
 **/migrations/*.pyc
 
-# Ignore the entire frontend directory first
-/frontend/
-
 # Ignore backend settings file
-backend/config/settings.py
+/backend/config/settings.py
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# Ignore everything inside the frontend directory first
+/frontend/*
+
+# Re-include the frontend directory itself (important for nested exceptions)
+!/frontend/
+
+# Re-include the build directory inside frontend
+!/frontend/build/
+
+# Re-include specific important files directly under frontend that you want to track
+!/frontend/package.json
+!/frontend/package-lock.json
+
 # dependencies
-node_modules/
 .pnp
 .pnp.js
 
