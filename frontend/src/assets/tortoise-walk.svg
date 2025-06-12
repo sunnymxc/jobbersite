@@ -1,0 +1,52 @@
+<svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .tortoise {
+      animation: walk 3s linear infinite;
+      transform-origin: 50% 100%;
+    }
+
+    .leg {
+      animation: leg-move 1.5s linear infinite alternate;
+      transform-origin: 50% 0;
+    }
+
+    .head {
+      animation: head-move 2s linear infinite alternate;
+      transform-origin: 50% 100%;
+    }
+
+    @keyframes walk {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(15px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes leg-move {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(15deg); }
+    }
+
+    @keyframes head-move {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(5deg); }
+    }
+  </style>
+
+  <g class="tortoise">
+    <path d="M 100 20 C 130 25, 160 40, 160 70 C 160 100, 130 110, 100 110 C 70 110, 40 100, 40 70 C 40 40, 70 25, 100 20 Z" fill="#964B00" />
+
+    <g class="head">
+      <ellipse cx="175" cy="60" rx="15" ry="10" fill="#964B00" />
+    </g>
+
+    <g class="leg" transform="translate(60, 90)">
+      <rect x="-5" y="0" width="10" height="30" fill="#964B00" />
+    </g>
+    <g class="leg" transform="translate(140, 90)">
+      <rect x="-5" y="0" width="10" height="30" fill="#964B00" />
+    </g>
+
+    <polygon points="20 70, 10 75, 20 80" fill="#964B00" />
+
+  </g>
+</svg>
