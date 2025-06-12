@@ -41,6 +41,7 @@ urlpatterns = [
     path('api/docs/', PostViewSet.as_view({'get': 'list'})),
     path('api/docs/<slug:slug>/', PostViewSet.as_view({'put': 'update', 'delete': 'destroy'})),
     path('api/subscribers/', SubscriberViewSet.as_view({'get': 'list'}), name='subscriber_list'),
+    path("select2/", include("django_select2.urls")),
     *router.urls
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

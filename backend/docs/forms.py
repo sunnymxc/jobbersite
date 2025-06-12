@@ -46,7 +46,7 @@ class GroupedStateMultipleChoiceField(forms.ModelMultipleChoiceField):
             choices.append((group_name, tuple(group_choices)))  # Changed here
 
         return choices
-    
+
 STATUS_CHOICES = (
     (0, 'Published'),
     (1, 'Featured'),
@@ -55,12 +55,12 @@ STATUS_CHOICES = (
 class PostForm(forms.ModelForm):
     discipline = GroupedDisciplineMultipleChoiceField(
         queryset=Discipline.objects.all(),
-        widget=Select2MultipleWidget(),
+        widget=Select2MultipleWidget(),  # Use Select2MultipleWidget here
     )
 
     state = GroupedStateMultipleChoiceField(
         queryset=State.objects.all(),
-        widget=Select2MultipleWidget(),
+        widget=Select2MultipleWidget(),  # Use Select2MultipleWidget here
     )
 
     class Meta:
@@ -71,5 +71,3 @@ class PostForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         if self.instance.pk is None:
             self.fields['user'].widget.attrs['disabled'] = True
-
-   
