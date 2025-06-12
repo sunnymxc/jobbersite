@@ -5,3 +5,5 @@ __pycache__/
 # Logs
 *.log
 stderr.log # Specific if it's always named this way
+
+/static/
