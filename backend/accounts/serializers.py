@@ -7,41 +7,49 @@ from .models import *
 class UserCreateSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = ('pk', 'email', 'first_name', 'last_name', 'username', 'freelancer', 'client', 'status', 'password')
+        # Using '__all__' to include all fields from the CustomUser model
+        # This will automatically include 'client' and 'freelancer' if they exist on the model.
+        fields = '__all__'
 
 # Models Serializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['pk', 'email', 'first_name', 'last_name', 'password']
+        # Changed to use '__all__' as requested
+        fields = '__all__'
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ('pk', 'name')
+        # Changed to use '__all__' as requested
+        fields = '__all__'
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ('pk',  'user', 'specialty', 'pic', 'headline', 'overview')
+        # Changed to use '__all__' as requested
+        fields = '__all__'
 
 class LangSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lang
-        fields = ('pk', 'lang1', 'lang2', 'lang3')
+        # Changed to use '__all__' as requested
+        fields = '__all__'
 
 class TaxSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tax
-        fields = ('pk', 'name', 'tin', 'signature', 'status')
+        # Changed to use '__all__' as requested
+        fields = '__all__'
 
 class IdentitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Identity
-        fields = ('pk', 'id_card', 'status', 'country', 'state', 'address')
+        # Changed to use '__all__' as requested
+        fields = '__all__'
 
 class BadgeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Badge
-        fields = ('pk', 'user', 'avail', 'rising_star', 'top_rated', 'plus')
-
+        # Changed to use '__all__' as requested
+        fields = '__all__'

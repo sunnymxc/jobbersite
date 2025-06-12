@@ -4,10 +4,15 @@ backend/config/settings.py
 !*/migrations/__init__.py
 **/migrations/*.pyc
 
+# Ignore the entire frontend directory first
+/frontend/
+
+# Ignore backend settings file
+backend/config/settings.py
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-node_modules
+node_modules/
 .pnp
 .pnp.js
 

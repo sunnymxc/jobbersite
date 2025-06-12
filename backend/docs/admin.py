@@ -2,7 +2,7 @@ from django.contrib import admin
 from .forms import PostForm
 from django.utils.html import format_html
 
-admin.site.site_header = "Jobbersite.com Admin"  # Replace with your desired header
+admin.site.site_header = "Jobbersite.com"  # Replace with your desired header
 
 from .models import *
 
