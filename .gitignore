@@ -7,17 +7,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # Ignore everything inside the frontend directory first
-/frontend/*
-
-# Re-include the frontend directory itself (important for nested exceptions)
-!/frontend/
-
-# Re-include the build directory inside frontend
-!/frontend/build/
-
-# Re-include specific important files directly under frontend that you want to track
-!/frontend/package.json
-!/frontend/package-lock.json
+/frontend/
 
 # dependencies
 .pnp
@@ -45,5 +35,8 @@ __pycache__/
 
 # Logs
 *.log
-stderr.log # Specific if it's always named this way
+backend/stderr.log # Specific if it's always named this way
+backend/passenger_wsgi.py
+backend/templates/index.html
+public_html
 
