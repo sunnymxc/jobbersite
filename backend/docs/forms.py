@@ -33,7 +33,7 @@ class GroupedStateMultipleChoiceField(forms.ModelMultipleChoiceField):
         super().__init__(queryset, *args, **kwargs)  # Pass queryset to super
         self.choices = self._get_choices()
 
-    def _get_choices(self):
+    def _get_choices(self, ):
         choices = [("", self.empty_label or "---------")] if self.empty_label is not None else []
         groups = {}
         for obj in self.queryset.order_by('country__name', 'name'):

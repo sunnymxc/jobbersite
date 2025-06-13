@@ -6,6 +6,8 @@
 /backend/config/settings.py
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+/backend/static/
+
 # Ignore everything inside the frontend directory first
 /frontend/*
 
@@ -38,3 +40,12 @@ yarn-debug.log*
 yarn-error.log*
 
 /Pipfile
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+stderr.log # Specific if it's always named this way
+
