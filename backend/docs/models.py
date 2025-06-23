@@ -123,6 +123,7 @@ class Post(models.Model):
     STATUS_CHOICES = (
         (0, 'Published'),
         (1, 'Featured'),
+        (2, 'Draft'),
     )
 
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)
