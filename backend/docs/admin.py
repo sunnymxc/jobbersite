@@ -35,7 +35,7 @@ class PostAdmin(admin.ModelAdmin):
 
     def get_list_display(self, request):
         if request.user.is_superuser:
-            return ('title', 'user', 'created_at')
+            return ('title', 'user', 'status', 'created_at')
         else:
             return ('title', 'created_at')
 
@@ -46,6 +46,8 @@ class PostAdmin(admin.ModelAdmin):
         return tuple(exclude)
 
     exclude = ('slug', 'video', 'gallery')
+
+    search_fields = ['title']
 
     class Media:
         css = {

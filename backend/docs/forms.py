@@ -50,6 +50,7 @@ class GroupedStateMultipleChoiceField(forms.ModelMultipleChoiceField):
 STATUS_CHOICES = (
     (0, 'Published'),
     (1, 'Featured'),
+    (2, 'Draft'),
 )
 
 class PostForm(forms.ModelForm):
