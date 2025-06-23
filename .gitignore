@@ -3,13 +3,13 @@
 /backend/*/migrations/
 
 # Ignore backend settings file
-/backend/config/settings.py
+backend/config/settings.py
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-/backend/static/
+backend/static/
 
-# Ignore everything inside the frontend directory first
-/frontend/
+# frontend build output
+frontend/build/
 
 # dependencies
 .pnp
