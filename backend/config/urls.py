@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework import routers
 from django.shortcuts import render  # Import render
 from django.views.generic import TemplateView
@@ -33,10 +33,10 @@ router.register(r'badges', BadgeViewSet, 'badges')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='index.html'), name='index'),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path("__reload__/", include("django_browser_reload.urls")),
     path('api/', include(router.urls)),
     path("select2/", include("django_select2.urls")),
+    re_path(r'^(?:.*)/?$', TemplateView.as_view(template_name='index.html')), # Catches all other paths
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
