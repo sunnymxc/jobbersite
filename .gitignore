@@ -42,7 +42,7 @@ yarn-error.log*
 /Pipfile
 
 # Python bytecode
-__pycache__/
+/backend/*/__pycache__/
 *.pyc
 
 # Logs
